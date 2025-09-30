@@ -35,12 +35,33 @@
     .split{display:grid; gap:16px; grid-template-columns: 2fr 1fr}
     @media (max-width: 900px){ .split{grid-template-columns:1fr} }
     .imgframe{margin:8px 0 16px}
-      /* Collage gallery for Additional Work */
-    .gallery{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-    .gallery figure{margin:0;border:1px solid #334155;border-radius:12px;overflow:hidden;position:relative;background:#0f172a}
-    .gallery figure::before{content:"";display:block;padding-top:66%} /* 3:2 ratio */
-    .gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-    .gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:6px 10px;font-size:12px;color:#cbd5e1;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+
+    /* Inline (single-row) image strip for Additional Work */
+    .imgrow{
+      display:flex;
+      gap:12px;
+      align-items:stretch;
+      flex-wrap:nowrap;           /* stay in one line */
+      overflow-x:auto;            /* scroll horizontally on small screens */
+      -webkit-overflow-scrolling: touch;
+      padding-bottom:6px;
+    }
+    .imgrow figure{
+      margin:0;
+      border:1px solid #334155;
+      border-radius:12px;
+      overflow:hidden;
+      background:#0f172a;
+      flex:0 0 auto;              /* prevent flex stretch so they stay side-by-side */
+    }
+    .imgrow img{
+      display:block;
+      height:220px;               /* consistent strip height */
+      width:auto;                 /* keep aspect ratio */
+    }
+    @media (min-width: 1100px){
+      .imgrow img{ height:240px; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -80,7 +101,7 @@
         <a class="btn" href="resume.pdf">Download Resume</a>
         <a class="btn" href="#contact">Contact</a>
       </div>
-      <p style="margin-top:12px" class="muted">Brookings, SD · <a href="tel:+16056914613">605‑691‑4613</a> · <a href="mailto:danewika@outlook.com">danewika@outlook.com</a> · <a href="https://www.linkedin.com/in/dane-wika/">linkedin.com/in/dane-wika</a></p>
+      <p style="margin-top:12px" class="muted">Brookings, SD · <a href="tel:+16056914613">605-691-4613</a> · <a href="mailto:danewika@outlook.com">danewika@outlook.com</a> · <a href="https://www.linkedin.com/in/dane-wika/">linkedin.com/in/dane-wika</a></p>
     </div>
   </header>
 
@@ -105,8 +126,8 @@
           <h3>Designed & Built a CPU</h3>
           <p class="muted">Verilog, C, Assembly</p>
           <ul class="tight">
-            <li>Implemented a 5‑stage pipelined 32‑bit processor on FPGA.</li>
-            <li>Bottom‑up approach: gates & flip‑flops → ALU & data storage → pipeline.</li>
+            <li>Implemented a 5-stage pipelined 32-bit processor on FPGA.</li>
+            <li>Bottom-up approach: gates & flip-flops → ALU & data storage → pipeline.</li>
             <li>Prototyped components on breadboards interfacing with the FPGA.</li>
           </ul>
           <p><span class="tag">FPGA</span> <span class="tag">Pipeline</span> <span class="tag">Digital Design</span></p>
@@ -115,14 +136,17 @@
           <h3>Snowmobile Belt Temp Sensor w/ Display</h3>
           <p class="muted">C, Assembly</p>
           <ul class="tight">
-            <li>Developed a go‑to‑market product to keep belt temperatures within spec.</li>
-            <li>Built two models using 3D‑printed parts, MCU, screen module, IR sensor, and piezo buzzer.</li>
+            <li>Developed a go-to-market product to keep belt temperatures within spec.</li>
+            <li>Built two models using 3D-printed parts, MCU, screen module, IR sensor, and piezo buzzer.</li>
           </ul>
           <p><span class="tag">Embedded</span> <span class="tag">Sensors</span> <span class="tag">Product</span></p>
         </article>
       </div>
       <figure class="imgframe">
-        <img src="./images/featured.jpg" loading="lazy" onerror="this.onerror=null; this.style.opacity='0.4'; this.alt='Image missing: images/featured.jpg';"$1>
+        <img src="./images/featured.jpg"
+             alt="Featured project photo"
+             loading="lazy"
+             onerror="this.onerror=null; this.style.opacity='0.4'; this.src='./images/featured.jpg'; this.alt='Image missing: images/featured.jpg';">
         <figcaption class="muted" style="margin-top:6px">Add your featured project image at <code>images/featured.jpg</code>.</figcaption>
       </figure>
     </section>
@@ -133,7 +157,7 @@
       <h2>Platform Software Intern – Collins Aerospace</h2>
       <p class="muted">May 2023 – Present · Cedar Rapids, IA</p>
       <ul class="tight">
-        <li>Developed and tested a cross‑platform DNS library (VxWorks, LynxOS) for a common computing project.</li>
+        <li>Developed and tested a cross-platform DNS library (VxWorks, LynxOS) for a common computing project.</li>
         <li>Authored technical documentation on IDE integration, Python scripting, and prototyping tools.</li>
         <li>Participated in 737 MAX system testing & verification using DOORS, JAMA, and PREP.</li>
         <li>Automated build and logging processes using batch scripts.</li>
@@ -152,7 +176,7 @@
         </div>
         <div>
           <h3 class="muted">OS & Platforms</h3>
-          <p>VxWorks, LynxOS, TI‑RTOS, Xilinx, Raspberry Pi, TI‑TMS570LS</p>
+          <p>VxWorks, LynxOS, TI-RTOS, Xilinx, Raspberry Pi, TI-TMS570LS</p>
         </div>
         <div>
           <h3 class="muted">Tools & Other</h3>
@@ -182,7 +206,7 @@
           </ul>
         </div>
         <div>
-          <h2>Volunteer & Mentor – 4‑H</h2>
+          <h2>Volunteer & Mentor – 4-H</h2>
           <ul class="tight">
             <li>Mentored youth Archery and Precision Optics teams during senior year.</li>
             <li>Qualified in state and national competitions; earned a scholarship for nationals.</li>
@@ -195,25 +219,31 @@
     <section id="contact" class="card">
       <div class="kicker">Contact</div>
       <h2>Get in touch</h2>
-      <p>Brookings, SD · <a href="tel:+16056914613">605‑691‑4613</a> · <a href="mailto:danewika@outlook.com">danewika@outlook.com</a> · <a href="https://www.linkedin.com/in/dane-wika/">linkedin.com/in/dane-wika</a></p>
-      
+      <p>Brookings, SD · <a href="tel:+16056914613">605-691-4613</a> · <a href="mailto:danewika@outlook.com">danewika@outlook.com</a> · <a href="https://www.linkedin.com/in/dane-wika/">linkedin.com/in/dane-wika</a></p>
     </section>
 
+    <!-- Additional Work (single-line strip) -->
     <section id="additional-work" class="card">
       <div class="kicker">Additional Work</div>
       <h2>More Projects</h2>
-      <div class="gallery">
+      <div class="imgrow">
         <figure>
-          <img src="./images/pcb.jpg" alt="PCB for the Autonomous Sprayer" loading="lazy" onerror="this.onerror=null; this.src='./images/featured.jpg'; this.alt='Image missing: images/pcb.jpg';" />
-          <figcaption>PCB for the Autonomous Sprayer.</figcaption>
+          <img src="./images/pcb.jpg"
+               alt="PCB for the Autonomous Sprayer"
+               loading="lazy"
+               onerror="this.onerror=null; this.src='./images/featured.jpg'; this.alt='Image missing: images/pcb.jpg';">
         </figure>
         <figure>
-          <img src="./images/intake.png" alt="Custom 5‑cylinder intake model" loading="lazy" onerror="this.onerror=null; this.src='./images/featured.jpg'; this.alt='Image missing: images/intake.png';" />
-          <figcaption>Custom intake for a 5‑cylinder engine in Fusion 360.</figcaption>
+          <img src="./images/intake.png"
+               alt="Custom 5-cylinder intake model"
+               loading="lazy"
+               onerror="this.onerror=null; this.src='./images/featured.jpg'; this.alt='Image missing: images/intake.png';">
         </figure>
         <figure>
-          <img src="./images/cfd.png" alt="CFD of the intake" loading="lazy" onerror="this.onerror=null; this.src='./images/featured.jpg'; this.alt='Image missing: images/cfd.png';" />
-          <figcaption>CFD of the intake.</figcaption>
+          <img src="./images/cfd.png"
+               alt="CFD of the intake"
+               loading="lazy"
+               onerror="this.onerror=null; this.src='./images/featured.jpg'; this.alt='Image missing: images/cfd.png';">
         </figure>
       </div>
     </section>
