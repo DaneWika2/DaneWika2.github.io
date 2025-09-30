@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dane Wika – Portfolio</title>
+  <meta name="description" content="Dane Wika – Platform Software Intern at Collins Aerospace and CS&E student at SDSU (’25). Embedded systems, robotics, compilers, and hands-on projects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --maxw: 1100px; --bg:#0b1020; --card:#0f172a; --muted:#94a3b8; --text:#e2e8f0; --ink:#cbd5e1; --line:#1f2a44; --accent:#60a5fa; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--ink)}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:24px}
+    header.hero{padding:56px 0}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,.25)}
+    h1,h2,h3{color:var(--text); margin:8px 0 12px}
+    p,li,small{color:var(--ink)}
+    .muted{color:var(--muted)}
+    .btn{display:inline-block; padding:10px 16px; border-radius:12px; border:1px solid #334155; margin-right:8px}
+    .grid{display:grid; gap:16px}
+    .grid-2{grid-template-columns:repeat(auto-fit, minmax(320px, 1fr))}
+    .grid-3{grid-template-columns:repeat(auto-fit, minmax(260px, 1fr))}
+    .tag{font-size:12px; padding:4px 8px; border:1px solid #334155; border-radius:999px; margin-right:6px; display:inline-block}
+    nav.top{position:sticky; top:0; backdrop-filter: blur(6px); background: rgba(11,16,32,.7); border-bottom: 1px solid var(--line); z-index:10}
+    nav.top .navwrap{max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:10px 24px}
+    nav.top a{margin-left:14px}
+    section + section{margin-top:16px}
+    footer{margin:40px 0 20px; text-align:center; color:var(--muted)}
+    ul.tight{margin:8px 0 0 20px}
+    .kicker{font-size:14px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+    .split{display:grid; gap:16px; grid-template-columns: 2fr 1fr}
+    @media (max-width: 900px){ .split{grid-template-columns:1fr} }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dane Wika",
+    "email": "mailto:danewika@outlook.com",
+    "telephone": "+1-605-691-4613",
+    "address": {"@type": "PostalAddress", "addressLocality": "Brookings", "addressRegion": "SD", "addressCountry": "US"},
+    "sameAs": ["https://www.linkedin.com/in/dane-wika/"]
+  }
+  </script>
+</head>
+<body>
+  <nav class="top">
+    <div class="navwrap">
+      <strong style="color:var(--text)">Dane Wika</strong>
+      <div>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="wrap hero">
+    <div class="card">
+      <h1>Hi, I'm <span style="color:var(--accent)">Dane Wika</span>.</h1>
+      <p class="muted">Platform Software Intern @ Collins Aerospace · B.S.E. Computer Science & Engineering, South Dakota State University (Graduating Fall 2025).</p>
+      <p>I build embedded and autonomous systems (RTOS, safety MCU, CAN), compilers, and practical products.</p>
+      <div style="margin-top:12px">
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn" href="#experience">Experience</a>
+        <a class="btn" href="resume.pdf">Download Resume</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+      <p style="margin-top:12px" class="muted">Brookings, SD · <a href="tel:+16056914613">605‑691‑4613</a> · <a href="mailto:danewika@outlook.com">danewika@outlook.com</a> · <a href="https://www.linkedin.com/in/dane-wika/">linkedin.com/in/dane-wika</a></p>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <!-- Projects -->
+    <section id="projects" class="card">
+      <div class="kicker">Projects</div>
+      <h2>Featured Work</h2>
+      <div class="grid grid-3">
+        <article class="card">
+          <h3>Fully Autonomous Crop Sprayer</h3>
+          <p class="muted">C, C++, Lua, Python</p>
+          <ul class="tight">
+            <li>Autonomous sprayer using RTK GPS guidance with a dedicated safety system.</li>
+            <li>Built a safety RTOS with watchdog and round-robin scheduler.</li>
+            <li>Wrote a custom kernel with memory allocation & protection; I/O for CAN, SPI, I2C, ADC, PWM.</li>
+            <li>Collaborated on PCB design, implementation, and testing for the robot.</li>
+          </ul>
+          <p><span class="tag">RTOS</span> <span class="tag">CAN</span> <span class="tag">SPI/I2C</span> <span class="tag">PCB</span></p>
+        </article>
+        <article class="card">
+          <h3>Designed & Built a CPU</h3>
+          <p class="muted">Verilog, C, Assembly</p>
+          <ul class="tight">
+            <li>Implemented a 5‑stage pipelined 32‑bit processor on FPGA.</li>
+            <li>Bottom‑up approach: gates & flip‑flops → ALU & data storage → pipeline.</li>
+            <li>Prototyped components on breadboards interfacing with the FPGA.</li>
+          </ul>
+          <p><span class="tag">FPGA</span> <span class="tag">Pipeline</span> <span class="tag">Digital Design</span></p>
+        </article>
+        <article class="card">
+          <h3>Snowmobile Belt Temp Sensor w/ Display</h3>
+          <p class="muted">C, Assembly</p>
+          <ul class="tight">
+            <li>Developed a go‑to‑market product to keep belt temperatures within spec.</li>
+            <li>Built two models using 3D‑printed parts, MCU, screen module, IR sensor, and piezo buzzer.</li>
+          </ul>
+          <p><span class="tag">Embedded</span> <span class="tag">Sensors</span> <span class="tag">Product</span></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience + Skills split -->
+    <section id="experience" class="card">
+      <div class="kicker">Experience</div>
+      <h2>Platform Software Intern – Collins Aerospace</h2>
+      <p class="muted">May 2023 – Present · Cedar Rapids, IA</p>
+      <ul class="tight">
+        <li>Developed and tested a cross‑platform DNS library (VxWorks, LynxOS) for a common computing project.</li>
+        <li>Authored technical documentation on IDE integration, Python scripting, and prototyping tools.</li>
+        <li>Participated in 737 MAX system testing & verification using DOORS, JAMA, and PREP.</li>
+        <li>Automated build and logging processes using batch scripts.</li>
+        <li>Implemented a CAN driver for an edge computing system.</li>
+      </ul>
+    </section>
+
+    <section id="skills" class="card">
+      <div class="kicker">Technical Skills</div>
+      <h2>Skills</h2>
+      <div class="grid grid-3">
+        <div>
+          <h3 class="muted">Languages</h3>
+          <p>Assembly, C, C++, C#, Python, XML, Verilog, Batch, Lua</p>
+        </div>
+        <div>
+          <h3 class="muted">OS & Platforms</h3>
+          <p>VxWorks, LynxOS, TI‑RTOS, Xilinx, Raspberry Pi, TI‑TMS570LS</p>
+        </div>
+        <div>
+          <h3 class="muted">Tools & Other</h3>
+          <p>Git, Subversion, Linux, Docker, Jira, JAMA, DOORS, PREP, Wind River, Trace32</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="card">
+      <div class="kicker">Education</div>
+      <h2>South Dakota State University</h2>
+      <p class="muted">B.S.E. in Computer Science & Engineering · Graduating Fall 2025 · GPA 3.5</p>
+      <p><strong>Coursework:</strong> Microcontrollers, Algorithms, Compilers, Computer Architecture, Operating Systems</p>
+      <p><strong>Extracurriculars:</strong> Association for Computing Machinery, IEEE, Aerospace Club, Snow Hares, Intramurals</p>
+    </section>
+
+    <!-- Leadership & Volunteering -->
+    <section id="leadership" class="card">
+      <div class="kicker">Leadership & Volunteering</div>
+      <div class="grid grid-2">
+        <div>
+          <h2>Club President – Snow Hares (SDSU)</h2>
+          <ul class="tight">
+            <li>Founded the club in 2021 to promote snowmobiling experience and education.</li>
+            <li>Led meetings, organized school events, and won multiple spirit day events.</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Volunteer & Mentor – 4‑H</h2>
+          <ul class="tight">
+            <li>Mentored youth Archery and Precision Optics teams during senior year.</li>
+            <li>Qualified in state and national competitions; earned a scholarship for nationals.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="card">
+      <div class="kicker">Contact</div>
+      <h2>Get in touch</h2>
+      <p>Brookings, SD · <a href="tel:+16056914613">605‑691‑4613</a> · <a href="mailto:danewika@outlook.com">danewika@outlook.com</a> · <a href="https://www.linkedin.com/in/dane-wika/">linkedin.com/in/dane-wika</a></p>
+    </section>
+  </main>
+
+  <footer>© <span id="y"></span> Dane Wika</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
