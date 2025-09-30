@@ -38,7 +38,7 @@
 
     /* Featured image sizing (smaller) */
     #projects .imgframe{max-width:720px;margin-left:auto;margin-right:auto}
-    #projects .imgframe img{display:block;width:100%;height:auto}
+    #projects .imgframe img{display:block;width:100%;height:auto;cursor:zoom-in}
 
     /* Inline (single-row) image strip for Additional Work */
     .imgrow{
@@ -50,7 +50,6 @@
       -webkit-overflow-scrolling: touch;
       padding-bottom:6px;
     }
-
     .imgrow figure{
       margin:0;
       border:1px solid #334155;
@@ -59,16 +58,37 @@
       background:#0f172a;
       flex:0 0 auto;
     }
-
     .imgrow img{
       display:block;
-      height:120px;               /* ↓↓↓ smaller height */
+      height:120px;               /* small thumbnails */
       width:auto;                 /* keep aspect ratio */
+      cursor:zoom-in;
+    }
+    @media (min-width:1100px){
+      .imgrow img{ height:150px; } /* modest on big screens */
     }
 
-    @media (min-width:1100px){
-      .imgrow img{ height:150px; } /* still modest on big screens */
+    /* Lightbox */
+    .lightbox{
+      position:fixed; inset:0; display:none;
+      align-items:center; justify-content:center;
+      background:rgba(0,0,0,.85); z-index:1000; padding:24px;
     }
+    .lightbox.open{ display:flex; }
+    .lightbox img{
+      max-width:92vw; max-height:86vh;
+      border-radius:12px; border:1px solid #334155; display:block;
+      box-shadow:0 20px 60px rgba(0,0,0,.5);
+      background:#0f172a;
+    }
+    .lb-caption{ color:#e2e8f0; margin-top:10px; text-align:center; }
+    .lb-close{
+      position:absolute; top:16px; right:16px;
+      background:rgba(17,24,39,.6); border:1px solid #334155;
+      color:#e2e8f0; font-size:24px; line-height:1;
+      padding:6px 10px; border-radius:10px; cursor:pointer;
+    }
+    .lb-close:hover{ background:rgba(17,24,39,.8); }
   </style>
   <script type="application/ld+json">
   {
@@ -238,31 +258,80 @@
 
     <!-- Additional Work (single-line strip) -->
     <section id="additional-work" class="card">
-      <div class="kicker">Additonal Project Photos</div>
+      <div class="kicker">Additional Project Photos</div>
       <div class="imgrow">
         <figure>
           <img src="./images/pcb.jpg"
                alt="PCB for the Autonomous Sprayer"
                loading="lazy"
-               onerror="this.onerror=null; this.src='./preview.jpg'; this.alt='Image missing: images/pcb.jpg';">
+               onerror="this.onerror=null; this.src='./images/featured.jpg'; this.alt='Image missing: images/pcb.jpg';">
         </figure>
         <figure>
           <img src="./images/intake.PNG"
                alt="Custom 5-cylinder intake model"
                loading="lazy"
-               onerror="this.onerror=null; this.src='./images/preview.jpg'; this.alt='Image missing: images/intake.png';">
+               onerror="this.onerror=null; this.src='./images/featured.jpg'; this.alt='Image missing: images/intake.PNG';">
         </figure>
         <figure>
           <img src="./images/cfd.PNG"
                alt="CFD of the intake"
                loading="lazy"
-               onerror="this.onerror=null; this.src='./images/preview.jpg'; this.alt='Image missing: images/cfd.png';">
+               onerror="this.onerror=null; this.src='./images/featured.jpg'; this.alt='Image missing: images/cfd.PNG';">
         </figure>
       </div>
     </section>
   </main>
 
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <button id="lb-close" class="lb-close" aria-label="Close">×</button>
+    <div class="lb-inner">
+      <img id="lb-img" alt="">
+      <div id="lb-cap" class="lb-caption"></div>
+    </div>
+  </div>
+
   <footer>© <span id="y"></span> Dane Wika</footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Simple lightbox
+    (function(){
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lb-img');
+      const lbCap = document.getElementById('lb-cap');
+      const lbClose = document.getElementById('lb-close');
+
+      function openLightbox(src, alt){
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lbCap.textContent = alt || '';
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+      }
+      function closeLightbox(){
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+        lbImg.alt = '';
+        lbCap.textContent = '';
+      }
+
+      // Click thumbnails (featured + additional work)
+      document.querySelectorAll('#projects .imgframe img, #additional-work .imgrow img')
+        .forEach(img => {
+          img.addEventListener('click', () => {
+            // Use data-full if provided, else src
+            const full = img.dataset.full || img.currentSrc || img.src;
+            openLightbox(full, img.alt);
+          });
+        });
+
+      // Close behaviors
+      lbClose.addEventListener('click', closeLightbox);
+      lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+      window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+    })();
+  </script>
 </body>
 </html>
