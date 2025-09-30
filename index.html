@@ -35,6 +35,12 @@
     .split{display:grid; gap:16px; grid-template-columns: 2fr 1fr}
     @media (max-width: 900px){ .split{grid-template-columns:1fr} }
     .imgframe{margin:8px 0 16px}
+      /* Collage gallery for Additional Work */
+    .gallery{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .gallery figure{margin:0;border:1px solid #334155;border-radius:12px;overflow:hidden;position:relative;background:#0f172a}
+    .gallery figure::before{content:"";display:block;padding-top:66%} /* 3:2 ratio */
+    .gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+    .gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:6px 10px;font-size:12px;color:#cbd5e1;background:linear-gradient(transparent,rgba(0,0,0,.7))}
   </style>
   <script type="application/ld+json">
   {
@@ -116,8 +122,8 @@
         </article>
       </div>
       <figure class="imgframe">
-        <img src="images/featured.jpg" alt="Featured project photo" style="width:100%;height:auto;border-radius:12px;border:1px solid #334155" />
-        <figcaption class="muted" style="margin-top:6px">Photo of the completed Autonomous Crop Sprayer without its sprayer rack at a engineering expo.</figcaption>
+        <img src="./images/featured.jpg" loading="lazy" onerror="this.onerror=null; this.style.opacity='0.4'; this.alt='Image missing: images/featured.jpg';"$1>
+        <figcaption class="muted" style="margin-top:6px">Add your featured project image at <code>images/featured.jpg</code>.</figcaption>
       </figure>
     </section>
 
@@ -195,18 +201,21 @@
 
     <section id="additional-work" class="card">
       <div class="kicker">Additional Work</div>
-       <figure class="imgframe">
-        <img src="images/pcb.jpg" alt="Featured PCB for the Autonomous Sprayer" style="width:100%;height:auto;border-radius:12px;border:1px solid #334155" />
-        <figcaption class="muted" style="margin-top:6px">PCB for the Autonomous Sprayer.</figcaption>
-      </figure>
-       <figure class="imgframe">
-        <img src="images/intake.png" alt="Featured 3D Model" style="width:100%;height:auto;border-radius:12px;border:1px solid #334155" />
-        <figcaption class="muted" style="margin-top:6px">Custom intake for a 5 cylinder engine modeled in Fusion 360.</figcaption>
-      </figure>
-       <figure class="imgframe">
-        <img src="images/cfd.png" alt="Featured CFD of the Intake" style="width:100%;height:auto;border-radius:12px;border:1px solid #334155" />
-        <figcaption class="muted" style="margin-top:6px">CFD of the Intake.</figcaption>
-      </figure>
+      <h2>More Projects</h2>
+      <div class="gallery">
+        <figure>
+          <img src="./images/pcb.jpg" alt="PCB for the Autonomous Sprayer" loading="lazy" onerror="this.onerror=null; this.src='./images/featured.jpg'; this.alt='Image missing: images/pcb.jpg';" />
+          <figcaption>PCB for the Autonomous Sprayer.</figcaption>
+        </figure>
+        <figure>
+          <img src="./images/intake.png" alt="Custom 5‑cylinder intake model" loading="lazy" onerror="this.onerror=null; this.src='./images/featured.jpg'; this.alt='Image missing: images/intake.png';" />
+          <figcaption>Custom intake for a 5‑cylinder engine in Fusion 360.</figcaption>
+        </figure>
+        <figure>
+          <img src="./images/cfd.png" alt="CFD of the intake" loading="lazy" onerror="this.onerror=null; this.src='./images/featured.jpg'; this.alt='Image missing: images/cfd.png';" />
+          <figcaption>CFD of the intake.</figcaption>
+        </figure>
+      </div>
     </section>
   </main>
 
