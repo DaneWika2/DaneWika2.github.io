@@ -44,27 +44,30 @@
     .imgrow{
       display:flex;
       gap:12px;
-      align-items:stretch;
+      align-items:center;
       flex-wrap:nowrap;           /* stay in one line */
       overflow-x:auto;            /* scroll horizontally on small screens */
       -webkit-overflow-scrolling: touch;
       padding-bottom:6px;
     }
+
     .imgrow figure{
       margin:0;
       border:1px solid #334155;
       border-radius:12px;
       overflow:hidden;
       background:#0f172a;
-      flex:0 0 auto;              /* keep side-by-side */
+      flex:0 0 auto;
     }
+
     .imgrow img{
       display:block;
-      height:220px;               /* consistent strip height */
+      height:120px;               /* ↓↓↓ smaller height */
       width:auto;                 /* keep aspect ratio */
     }
+
     @media (min-width:1100px){
-      .imgrow img{ height:240px; }
+      .imgrow img{ height:150px; } /* still modest on big screens */
     }
   </style>
   <script type="application/ld+json">
